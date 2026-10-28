@@ -47,6 +47,10 @@ layout: default
       <section class="page__content" itemprop="text">
         {{ content }}
 
+        {% if page.collection == 'publications' and page.code_status %}
+          <p>Code status: {{ page.code_status | escape }}</p>
+        {% endif %}
+
         {%- assign has_any_link = page.paperurl or page.slidesurl or page.bibtexurl or page.codeurl -%}
 
         {%- if page.citation -%}
@@ -74,7 +78,7 @@ layout: default
 
       <footer class="page__meta">
         {% if site.data.ui-text[site.locale].meta_label %}
-          <h4 class="page__meta-title">{{ site.data.ui-text[site.locale].meta_label }}</h4>
+          <h4 class="page__meta-title">{{ site.data.ui-text[site.locale].meta_label | default: "Follow:" }}</h4>
         {% endif %}
         {% include page__taxonomy.html %}
       </footer>

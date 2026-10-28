@@ -55,6 +55,10 @@
     {% if post.citation %}
       <p>Recommended citation: {{ post.citation }}</p>
     {% endif %}
+
+    {% if post.collection == 'publications' and post.code_status %}
+      <p>Code status: {{ post.code_status | escape }}</p>
+    {% endif %}
     
     {% if post.paperurl or post.slidesurl or post.bibtexurl or post.codeurl %}
       <p>
